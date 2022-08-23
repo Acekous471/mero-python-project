@@ -55,8 +55,20 @@ Which column would you like to update?. Please make sure column is one of the fo
 
 
 def create_connection(db_name):
-    conn = sqlite3.connect(db_name)
-    return conn
+    """Create Sqlite3 connection and return it
+
+    Args:
+        db_name (str): name of database
+
+    Returns:
+        conn(sqlite3 connection): sqlite3 connection object
+    """
+    try:
+        conn = sqlite3.connect(db_name)
+    except Exception as e:
+        print(e)
+    finally:
+        return conn
 
 
 def create_table_user(conn):
